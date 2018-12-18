@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const FooterNav = ({ type }) => {
+const Footer = ({ type }) => {
 	return (
 		<footer className="footer-nav">
 			<div className="open-search">
@@ -11,4 +11,4 @@ const FooterNav = ({ type }) => {
 	);
 }
 
-export default FooterNav
+export default Footer

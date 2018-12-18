@@ -1,5 +1,4 @@
 import React from 'react'
-
 import BookCard from './BookCard'
 
 const BookShelf = ({ title, books, changeShelf }) => {
@@ -11,7 +10,13 @@ const BookShelf = ({ title, books, changeShelf }) => {
     <h2 className="bookshelf-title">{title}</h2>
     <div className="bookshelf-books">
       <ol className="books-grid">
-        {books.map((book, index) => (<BookCard book={book} key={index} onUpdate={(shelf) => {updateBook(book, shelf)}}/>))}
+        {books.map((book, index) => (
+          <BookCard
+            key={index}
+            book={book}
+            onChange={(shelf) => {updateBook(book, shelf)}}
+          />
+        ))}
       </ol>
     </div>
   </div>

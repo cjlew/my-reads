@@ -1,10 +1,9 @@
 import React from 'react';
 
-const BookCard = ({ book, onUpdate }) => {
-
-  const image = book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : 'http://www.evolvefish.com/thumbnail.asp?file=assets/images/vinyl%20decals/EF-VDC-00035(black).jpg&maxx=300&maxy=0'
+const BookCard = ({ book, onChange }) => {
+  const image = book.imageLinks && book.imageLinks.thumbnail ? book.imageLinks.thumbnail : "http://www.evolvefish.com/thumbnail.asp?file=assets/images/vinyl%20decals/EF-VDC-00035(black).jpg&maxx=300&maxy=0"
   const changeShelf = (e) => {
-    onUpdate(e.target.value)
+    onChange(e.target.value)
   }
   return(
     <li>

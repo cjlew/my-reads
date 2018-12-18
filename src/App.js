@@ -19,17 +19,18 @@ class BooksApp extends Component {
     this.fetchBooks()
   };
 
-  fetchBooks = () => {
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books: books })
-    })
-  }
-
   updateBooks = (book, shelf) => {
     BooksAPI.update(book, shelf).then(() => {
       this.fetchBooks()
     })
   }
+
+  fetchBooks = () => {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
+  }
+
 
   render () {
       const { books } = this.state;

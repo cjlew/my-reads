@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 const BookShelves = (props) => {
 	const { books, onChange } = props;
-
 	return (
 		<div className="list-books-content">
 			<BookShelf

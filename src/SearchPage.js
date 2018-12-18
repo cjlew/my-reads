@@ -17,7 +17,7 @@ class SearchPage extends Component {
     this.searchBooks(value)
   }
 
-  setBookShelf = (books) => {
+  setShelf = (books) => {
     let myBooks = this.props.books
     books.forEach(book => {
       myBooks.forEach(myBook => {
@@ -27,24 +27,24 @@ class SearchPage extends Component {
     return books
   }
 
+  addBookToShelf = (book, shelf) => {
+    this.props.onChange(book, shelf)
+  }
+
   searchBooks = (query) => {
     if (query.length !== 0) {
       BooksAPI.search(query).then((books) => {
         if (books.length > 0) {
           books = books.filter((book) => (book.imageLinks))
-          books = this.setBookShelf(books)
+          books = this.setShelf(books)
           this.setState(() => {
-            return {books: books}
+            return { books }
           })
         }
       })
     } else {
       this.setState({books: [], query: ''})
     }
-  }
-
-  addBookToShelf = (book, shelf) => {
-    this.props.onChange(book, shelf)
   }
 
   render() {
@@ -54,7 +54,7 @@ class SearchPage extends Component {
         <div className="search-books-bar">
           <Link to='/' className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" value={this.state.query} onChange={this.handleChange}/>
+            <input type="text" placeholder="Search by title or author" value={query} onChange={this.handleChange}/>
           </div>
         </div>
         <div className="search-books-results">
@@ -63,7 +63,7 @@ class SearchPage extends Component {
               <BookCard
                 key={index}
                 book={book}
-                onUpdate={(shelf) => {this.addBookToShelf(book, shelf)}}
+                onChange={(shelf) => {this.addBookToShelf(book, shelf)}}
               />
             ))}
           </ol>
